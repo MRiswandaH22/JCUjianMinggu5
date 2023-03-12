@@ -29,7 +29,7 @@ public class TestInvalidLogin {
 
         //stepaction
         JavascriptExecutor js = (JavascriptExecutor) driver;
-        js.executeScript("window,scroll(0,-600)");
+        js.executeScript("window,scroll(0,-550)");
         orderPage.setCloseBanner();
 
         //stepaction logout
@@ -53,12 +53,14 @@ public class TestInvalidLogin {
     public void user_enter_valid_username(){
         System.out.println("User enter valid username");
         loginPage.inputUsername("riswanda22");
+        Hooks.delay(Constants.DETIK);
     }
 
     @And("User enter invalid password")
     public void user_enter_invalid_password(){
         System.out.println("User enter invalid password");
         loginPage.inputPassword("ngasalajayaahh");
+        Hooks.delay(Constants.DETIK);
     }
 
     @And("User click button login")
@@ -70,6 +72,7 @@ public class TestInvalidLogin {
     @Then("User get massage invalid login")
     public void user_get_massage_invalid_login(){
         System.out.println("User get massage invalid login");
+        Assert.assertEquals(loginPage.getErrorLogin(),"ERROR: The username or password you entered is incorrect. Lost your password?");
     }
 
 }

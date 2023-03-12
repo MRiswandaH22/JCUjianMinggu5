@@ -14,6 +14,9 @@ public class LoginPage {
         PageFactory.initElements(driver, this);
     }
 
+    @FindBy(xpath = "//div[@id='primary']//li[1]")
+    WebElement txtInvalidLogin;
+
     @FindBy(xpath = "//*[@id='customer_login']/div[1]/h2")
     WebElement txtTitleLogin;
 
@@ -31,6 +34,10 @@ public class LoginPage {
 
     @FindBy(xpath = "//h1[@class='page-title']")
     WebElement txtMyaccount;
+
+    public String getErrorLogin(){
+        return this.txtInvalidLogin.getText();
+    }
 
     public String getTxtMyAccount(){
         return txtMyaccount.getText();

@@ -120,6 +120,7 @@ public class TestOrder {
     public void user_add_country(){
         System.out.println("User add country");
         orderPage.setAddCountry("Indonesia");
+        Hooks.delay(Constants.DETIK);
     }
 
     @And("User input street addres")
@@ -140,6 +141,7 @@ public class TestOrder {
     public void user_input_province(){
         System.out.println("User input province");
         orderPage.setAddProvince("Jawa Barat");
+        Hooks.delay(Constants.DETIK);
     }
 
     @And("User input postcode")
@@ -161,6 +163,7 @@ public class TestOrder {
         js.executeScript("window,scroll(0,-50)");
         System.out.println("User click agreement");
         orderPage.setClickAgreement();
+        Hooks.delay(Constants.DETIK);
     }
 
     @And("User click button placeorder")
@@ -171,8 +174,11 @@ public class TestOrder {
 
     @Then("User get message succes order")
     public void User_get_message_succes_order(){
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("window,scroll(0,550)");
         System.out.println("User get message succes order");
         orderPage.getMessageSuccesOrder();
+        Hooks.delay(Constants.DETIK);
 
         //step verify
         Assert.assertEquals(orderPage.getMessageSuccesOrder(),"Thank you. Your order has been received.");
